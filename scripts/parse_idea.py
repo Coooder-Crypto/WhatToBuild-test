@@ -1,31 +1,30 @@
-#!/usr/bin/env python3
 import os
 import yaml
-import sys
 
 def parse_idea_md(file_path):
-    with open(file_path, 'r') as f:
+    # 获取仓库根目录
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # 拼接完整路径
+    full_path = os.path.join(repo_root, file_path)
+    print("Full Path:", full_path)
+    
+    with open(full_path, 'r') as f:
         content = f.read()
-    frontmatter = content.split('---')[1]
-    data = yaml.safe_load(frontmatter)
-    return data
-
-def update_readme(idea_data):
-    readme_path = 'README.md'
-    idea_entry = f"## {idea_data['name']}\n"
-    idea_entry += f"- **Description**: {idea_data['description']}\n"
-    idea_entry += f"- **Tags**: {', '.join(idea_data['tags'])}\n"
-    idea_entry += f"- **Contributors**: {', '.join(idea_data['contributors'])}\n"
-    if 'related_links' in idea_data:
-        idea_entry += "- **Related Links**:\n"
-        for link in idea_data['related_links']:
-            idea_entry += f"  - [{link[0]}]({link[1]})\n"
-    idea_entry += "\n"
-
-    with open(readme_path, 'a') as f:
-        f.write(idea_entry)
+        # 提取 YAML 部分
+        frontmatter = content.split('---', 2)[1].strip()
+        # 解析 YAML
+        data = yaml.safe_load(frontmatter)
+        return data
 
 if __name__ == '__main__':
+    import sys
+    if len(sys.argv) != 2:
+        print("Usage: python parse_idea.py <idea_file>")
+        sys.exit(1)
+    
     idea_file = sys.argv[1]
-    idea_data = parse_idea_md(idea_file)
-    update_readme(idea_data)
+    try:
+        idea_data = parse_idea_md(idea_file)
+        print("Parsed Idea Data:", idea_data)
+    except Exception as e:
+        print("Error parsing file:", e)
