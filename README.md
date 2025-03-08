@@ -15,4 +15,3 @@ Here are the ideas submitted so far:
 ---
 
 <!-- Ideas will be added here automatically by the GitHub Actions script -->
-
