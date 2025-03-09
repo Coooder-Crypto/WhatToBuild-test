@@ -21,19 +21,26 @@ def update_readme(idea_data, file_path):
     with open(readme_path, 'r') as f:
         readme_content = f.read()
     
-    # 生成新内容的标题（基于文件名和 YAML 数据）
-    idea_title = idea_data.get("title", os.path.splitext(os.path.basename(file_path))[0])
+    # 生成新内容的标题（基于 YAML 数据）
+    idea_title = idea_data.get("title", "Untitled Idea")
     new_section = f"## {idea_title}\n\n{idea_data.get('description', '')}\n\n"
     
-    # 检查是否已经存在相同标题的内容
-    if f"## {idea_title}" in readme_content:
-        print(f"Section for '{idea_title}' already exists in README. Skipping update.")
-        return
+    # 查找旧标题（基于文件路径）
+    old_section_pattern = f"## .*? \\(File: {file_path}\\)"
+    import re
+    match = re.search(old_section_pattern, readme_content, re.DOTALL)
     
-    # 在 README 中追加新内容
-    with open(readme_path, 'a') as f:
-        f.write(new_section)
-    print(f"Updated README with new section for '{idea_title}'.")
+    if match:
+        # 如果找到旧标题，替换为新内容
+        updated_content = re.sub(old_section_pattern, new_section.rstrip(), readme_content, flags=re.DOTALL)
+        with open(readme_path, 'w') as f:
+            f.write(updated_content)
+        print(f"Updated README with new section for '{idea_title}'.")
+    else:
+        # 如果未找到旧标题，追加新内容
+        with open(readme_path, 'a') as f:
+            f.write(new_section)
+        print(f"Appended new section to README for '{idea_title}'.")
 
 if __name__ == '__main__':
     import sys
