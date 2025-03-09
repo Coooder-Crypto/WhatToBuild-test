@@ -1,65 +1,60 @@
 import os
 import yaml
-import re
 
 def parse_idea_md(file_path):
-    try:
-        # Get the repository root directory
-        repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        # Construct the full path
-        full_path = os.path.join(repo_root, file_path)
-        print("Full Path:", full_path)
-        
-        with open(full_path, 'r') as f:
-            content = f.read()
-            # Extract YAML part
-            _, yaml_content, _ = content.split('---', 2)
-            # Parse YAML
-            data = yaml.safe_load(yaml_content.strip())
-            return data
-    except Exception as e:
-        print(f"Error parsing YAML from {file_path}: {e}")
-        raise
+    # 获取仓库根目录
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # 拼接完整路径
+    full_path = os.path.join(repo_root, file_path)
+    print("Full Path:", full_path)
+    
+    with open(full_path, 'r') as f:
+        content = f.read()
+        # 提取 YAML 部分
+        _, yaml_content, _ = content.split('---', 2)
+        # 解析 YAML
+        data = yaml.safe_load(yaml_content.strip())
+        return data
 
-def update_readme(idea_data, file_path):
-    try:
-        readme_path = "README.md"
-        with open(readme_path, 'r') as f:
-            readme_content = f.read()
-        
-        # Generate new content title (based on YAML data)
-        idea_title = idea_data.get("title", "Untitled Idea")
-        new_section = f"## {idea_title}\n\n{idea_data.get('description', '')}\n\n"
-        
-        # Find old title (based on file path)
-        old_section_pattern = f"## .*? \\(File: {file_path}\\)"
-        match = re.search(old_section_pattern, readme_content, re.DOTALL)
-        
-        if match:
-            # If old title found, replace with new content
-            updated_content = re.sub(old_section_pattern, new_section.rstrip(), readme_content, flags=re.DOTALL)
-            with open(readme_path, 'w') as f:
-                f.write(updated_content)
-            print(f"Updated README with new section for '{idea_title}'.")
-        else:
-            # If old title not found, append new content
-            with open(readme_path, 'a') as f:
-                f.write(new_section)
-            print(f"Appended new section to README for '{idea_title}'.")
-    except Exception as e:
-        print(f"Error updating README: {e}")
-        raise
+def update_readme(idea_data, file_path, readme_content):
+    # 生成新内容的标题（基于 YAML 数据）
+    idea_title = idea_data.get("title", "Untitled Idea")
+    new_section = f"## {idea_title}\n\n{idea_data.get('description', '')}\n\n"
+    
+    # 查找旧标题（基于文件路径）
+    old_section_pattern = f"## .*? \\(File: {file_path}\\)"
+    import re
+    match = re.search(old_section_pattern, readme_content, re.DOTALL)
+    
+    if match:
+        # 如果找到旧标题，替换为新内容
+        readme_content = re.sub(old_section_pattern, new_section.rstrip(), readme_content, flags=re.DOTALL)
+    else:
+        # 如果未找到旧标题，追加新内容
+        readme_content += new_section
+    
+    return readme_content
+
+def generate_readme(idea_files):
+    readme_content = "# Idea List\n\n"
+    for idea_file in idea_files:
+        try:
+            idea_data = parse_idea_md(idea_file)
+            print("Parsed Idea Data:", idea_data)
+            readme_content = update_readme(idea_data, idea_file, readme_content)
+        except Exception as e:
+            print(f"Error parsing file {idea_file}: {e}")
+    
+    # 写入到 README.md
+    with open("README.md", "w") as f:
+        f.write(readme_content)
+    print("Updated README.md with all ideas.")
 
 if __name__ == '__main__':
     import sys
     if len(sys.argv) != 2:
-        print("Usage: python parse_idea.py <idea_file>")
+        print("Usage: python parse_idea.py <idea_files>")
         sys.exit(1)
     
-    idea_file = sys.argv[1]
-    try:
-        idea_data = parse_idea_md(idea_file)
-        print("Parsed Idea Data:", idea_data)
-        update_readme(idea_data, idea_file)
-    except Exception as e:
-        print("Error processing file:", e)
+    idea_files = sys.argv[1].split()
+    generate_readme(idea_files)

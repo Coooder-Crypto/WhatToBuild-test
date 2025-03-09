@@ -33,20 +33,18 @@ jobs:
           echo "Modified or added files:"
           git diff --no-commit-id --name-only --diff-filter=AM -r HEAD -- 'ideas/'
 
-      - name: Find modified or added Markdown files
+      - name: Find and process all Markdown files
         run: |
-          # Find all modified or added Markdown files in the ideas/ directory
-          IDEA_FILES=$(git diff --no-commit-id --name-only --diff-filter=AM -r HEAD -- 'ideas/')
+          # Find all Markdown files in the ideas/ directory
+          IDEA_FILES=$(find ideas/ -type f -name '*.md')
           if [ -z "$IDEA_FILES" ]; then
-            echo "No modified or added idea files found."
+            echo "No idea files found."
             exit 0
           fi
 
-          # Process each file
-          for IDEA_FILE in $IDEA_FILES; do
-            echo "Processing file: $IDEA_FILE"
-            python scripts/parse_idea.py "$IDEA_FILE"
-          done
+          # Pass all files to the Python script
+          echo "Processing files: $IDEA_FILES"
+          python scripts/parse_idea.py "$IDEA_FILES"
 
       - name: Commit and push changes
         run: |
