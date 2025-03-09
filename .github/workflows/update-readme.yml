@@ -1,4 +1,4 @@
-name: Update README with New Idea
+name: Update README with Idea Changes
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
     paths:
       - 'ideas/**'
   pull_request:
-    types: [closed]
     branches:
       - main
     paths:
@@ -29,10 +28,15 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
+      - name: Debug modified or added files
+        run: |
+          echo "Modified or added files:"
+          git diff --no-commit-id --name-only --diff-filter=AM -r HEAD -- 'ideas/'
+
       - name: Find modified or added Markdown files
         run: |
           # Find all modified or added Markdown files in the ideas/ directory
-          IDEA_FILES=$(git diff-tree --no-commit-id --name-only --diff-filter=AM -r HEAD -- 'ideas/')
+          IDEA_FILES=$(git diff --no-commit-id --name-only --diff-filter=AM -r HEAD -- 'ideas/')
           if [ -z "$IDEA_FILES" ]; then
             echo "No modified or added idea files found."
             exit 0
@@ -55,6 +59,6 @@ jobs:
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
             git add README.md
-            git commit -m "Update README with new idea"
+            git commit -m "Update README with idea changes"
             git push
           fi
