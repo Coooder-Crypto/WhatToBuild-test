@@ -1,5 +1,5 @@
 ---
-title: idea1
+title: idea2
 description: This is a great idea.
 links:
   - name: Link1 Description
