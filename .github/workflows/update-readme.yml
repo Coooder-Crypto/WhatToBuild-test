@@ -48,9 +48,6 @@ jobs:
             python scripts/parse_idea.py "$IDEA_FILE"
           done
 
-      - name: Debug README content
-        run: cat README.md
-
       - name: Commit and push changes
         run: |
           if git diff --quiet README.md; then
