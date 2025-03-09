@@ -29,17 +29,20 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
-      - name: Extract idea data and update README
+      - name: Find modified or added Markdown files
         run: |
-          # Find the latest added Markdown file
-          IDEA_FILE=$(git diff-tree --no-commit-id --name-only --diff-filter=A -r HEAD -- 'ideas/')
-          if [ -z "$IDEA_FILE" ]; then
-            echo "No new idea file added."
+          # Find all modified or added Markdown files in the ideas/ directory
+          IDEA_FILES=$(git diff-tree --no-commit-id --name-only --diff-filter=AM -r HEAD -- 'ideas/')
+          if [ -z "$IDEA_FILES" ]; then
+            echo "No modified or added idea files found."
             exit 0
           fi
 
-          # Parse the Markdown file and update README
-          python scripts/parse_idea.py "$IDEA_FILE"
+          # Process each file
+          for IDEA_FILE in $IDEA_FILES; do
+            echo "Processing file: $IDEA_FILE"
+            python scripts/parse_idea.py "$IDEA_FILE"
+          done
 
       - name: Debug README content
         run: cat README.md
