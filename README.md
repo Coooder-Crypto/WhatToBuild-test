@@ -1,6 +1,6 @@
-# 🚀 Awesome Ideas Collection
+# 🚀 WhatToBuild
 
-Welcome to the **Awesome Ideas Collection**! This is a place to share, discuss, and collaborate on innovative ideas. Feel free to submit your own idea or contribute to existing ones.
+Welcome to the **WhatToBuild**! This is a place to share, discuss, and collaborate on innovative ideas. Feel free to submit your own idea or contribute to existing ones.
 
 ## 📝 How to Submit an Idea
 
