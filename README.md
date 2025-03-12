@@ -9,13 +9,10 @@ This is a great idea.
 3. Fill in all required fields in the template:
    - `title`: A clear, descriptive name for your idea
    - `description`: A concise explanation of what your idea does and why it matters
-   - `tags`: Relevant categories (e.g., DeFi, NFT, DAO, Infrastructure)
-   - `contributors`: Your name and GitHub username
-4. Add any optional fields that could help others understand your idea:
-   - `links`: Related projects, research papers, or prototypes
-   - `status`: Current development stage
-   - `estimated_time`: Expected implementation timeline
-   - `difficulty`: Technical complexity level
+   - `tags`: Relevant categories (e.g., ZK, DeFi, NFT, Wallet, DAO, Infra, Identity, Gaming, PublicGoods, Privacy, Security)
+   - `contributors`: Your GitHub username
+   - `status`: Current development stage (todo, analyzing, done)
+4. Add a detailed introduction including what, why, how, and related materials
 5. Submit a Pull Request
 6. After review and merge, your idea will be automatically added to this list
 
@@ -23,15 +20,16 @@ This is a great idea.
 
 | Idea | Description | Tags | Contributors | Status |
 | ---- | ----------- | ---- | ------------ | ------ |
-| [DAO Governance Tool](ideas/idea1.md) | A decentralized tool for improving DAO governance and participation. | `DAO`, `Governance`, `Community` | [Web3 Builder](https://github.com/web3-builder) | 🔵 in-progress |
-| [Web3 Idea Example](ideas/idea.md) | This is a great idea for the Web3 space. | `DeFi`, `Innovation` | [LXDAO Contributor](https://github.com/lxdao-contributor) | 🔵 ideation |
+| [DAO Governance Tool](ideas/idea1.md) | A decentralized tool for improving DAO governance and participation. | `DAO`, `Governance`, `Community` | [web3-builder](https://github.com/web3-builder) | 🟡 analyzing |
+| [Web3 Idea Example](ideas/idea.md) | This is a great idea for the Web3 space. | `DeFi`, `Innovation` | [lxdao-contributor](https://github.com/lxdao-contributor) | 🔴 todo |
+| [ZK Voting System](ideas/example-idea.md) | A zero-knowledge proof voting system for DAOs that ensures privacy while maintaining transparency. | `ZK`, `DAO`, `Privacy`, `Governance` | [zkdev](https://github.com/zkdev) | 🟡 analyzing |
 
 ## 📊 Status Legend
 
-- 🔵 ideation - Initial idea stage
-- 🟡 in-progress - Active development
-- 🟢 completed - Ready to use
+- 🔴 todo - Initial idea stage
+- 🟡 analyzing - Analysis in progress
+- 🟢 done - Ready to use
 
 ---
 
-*Last updated: 2025-03-09 20:15:20*
+*Last updated: 2025-03-12 09:09:45*
