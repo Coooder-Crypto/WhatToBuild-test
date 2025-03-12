@@ -1,8 +1,8 @@
-# 🚀 Awesome Ideas Collection
+# Idea List
 
-Welcome to the **Awesome Ideas Collection**! This is a place to share, discuss, and collaborate on innovative ideas. Feel free to submit your own idea or contribute to existing ones.
+Welcome to the **Awesome Ideas Collection**! This is a place to share, discuss, and collaborate on innovative ideas in the Web3 space. Whether you have a groundbreaking DeFi concept, a novel DAO governance model, or a revolutionary NFT use case, we'd love to hear about it!
 
-## 📝 How to Submit an Idea
+This is a great idea.
 
 1. Fork this repository
 2. Copy the [template](template.md) to create your idea file in the `ideas/` folder with a descriptive name (e.g., `defi-lending-protocol.md`)
@@ -32,4 +32,4 @@ Welcome to the **Awesome Ideas Collection**! This is a place to share, discuss, 
 
 ---
 
-*Last updated: 2025-03-12 09:09:45*
+*Last updated: 2025-03-12 01:13:15*
