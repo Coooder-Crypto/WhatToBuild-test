@@ -1,6 +1,6 @@
-# 🚀 WhatToBuild
+# Idea List
 
-Welcome to the **WhatToBuild**! This is a place to share, discuss, and collaborate on innovative ideas. Feel free to submit your own idea or contribute to existing ones.
+Welcome to the **Awesome Ideas Collection**! This is a place to share, discuss, and collaborate on innovative ideas in the Web3 space. Whether you have a groundbreaking DeFi concept, a novel DAO governance model, or a revolutionary NFT use case, we'd love to hear about it!
 
 This is a great idea.
 
@@ -21,6 +21,7 @@ This is a great idea.
 | Idea | Description | Tags | Contributors | Status |
 | ---- | ----------- | ---- | ------------ | ------ |
 | [DAO Governance Tool](ideas/idea1.md) | A decentralized tool for improving DAO governance and participation. | `DAO`, `Governance`, `Community` | [web3-builder](https://github.com/web3-builder) | 🟡 analyzing |
+| [pr test](ideas/ideadd.md) | A decentralized tool for improving DAO governance and participation. | `DAO`, `Governance`, `Community` | [web3-builder](https://github.com/web3-builder) | 🟡 analyzing |
 | [Web3 Idea Example](ideas/idea.md) | This is a great idea for the Web3 space. | `DeFi`, `Innovation` | [lxdao-contributor](https://github.com/lxdao-contributor) | 🔴 todo |
 | [ZK Voting System](ideas/example-idea.md) | A zero-knowledge proof voting system for DAOs that ensures privacy while maintaining transparency. | `ZK`, `DAO`, `Privacy`, `Governance` | [zkdev](https://github.com/zkdev) | 🟡 analyzing |
 
@@ -32,4 +33,4 @@ This is a great idea.
 
 ---
 
-*Last updated: 2025-03-12 01:13:15*
+*Last updated: 2025-03-12 01:32:24*
