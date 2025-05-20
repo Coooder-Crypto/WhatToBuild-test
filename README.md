@@ -22,6 +22,7 @@ This is a great idea.
 | ---- | ----------- | ---- | ------------ | ------ |
 | [DAO Governance Tool](ideas/idea1.md) | A decentralized tool for improving DAO governance and participation. | `DAO`, `Governance`, `Community` | [web3-builder](https://github.com/web3-builder) | 🟡 analyzing |
 | [pr test](ideas/ideadd.md) | A decentralized tool for improving DAO governance and participation. | `DAO`, `Governance`, `Community` | [web3-builder](https://github.com/web3-builder) | 🟡 analyzing |
+| [pr test1111](ideas/ideadd copy.md) | A decentralized tool for improving DAO governance and participation. | `DAO`, `Governance`, `Community` | [web3-builder](https://github.com/web3-builder) | 🟡 analyzing |
 | [Web3 Idea Example](ideas/idea.md) | This is a great idea for the Web3 space. | `DeFi`, `Innovation` | [lxdao-contributor](https://github.com/lxdao-contributor) | 🔴 todo |
 | [ZK Voting System](ideas/example-idea.md) | A zero-knowledge proof voting system for DAOs that ensures privacy while maintaining transparency. | `ZK`, `DAO`, `Privacy`, `Governance` | [zkdev](https://github.com/zkdev) | 🟡 analyzing |
 
@@ -33,4 +34,4 @@ This is a great idea.
 
 ---
 
-*Last updated: 2025-03-12 01:32:24*
+*Last updated: 2025-05-20 08:26:34*
